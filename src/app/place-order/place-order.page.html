@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar color="primary" >
+    <ion-title><ion-icon name="ios-cafe" style="zoom:1.5;"></ion-icon> </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<!--your  order -->
+<ion-card>
+  <ion-card-title color="primary"> Your Order</ion-card-title>
+  <ion-card-content>
+ <!-- form -->
+ <form onsubmit="processForm(event)" >
+    <!-- list -->
+ <ion-list  lines="full" class="ion-no-margin ion-no-padding">
+
+<!-- add ons -->
+        <ion-item>
+  <!-- sugars -->
+      <ion-radio-group >
+              <ion-list-header>
+            <ion-label color="primary">Sugars</ion-label>
+              </ion-list-header>
+
+                <ion-item>
+                <ion-label color="secondary">1</ion-label>
+                <ion-radio slot="start" value="male" ></ion-radio>
+              </ion-item>
+              <ion-item>
+                  <ion-label color="secondary" >2</ion-label>
+                  <ion-radio slot="start" value="female"  ></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="secondary">3</ion-label>
+                    <ion-radio  slot="start" value="female"  ></ion-radio>
+                  </ion-item>
+
+            </ion-radio-group>
+            </ion-item>
+    <!-- Milk -->
+    <ion-item>
+    <ion-radio-group>
+                  <ion-list-header>
+                <ion-label color="primary">Milk</ion-label>
+                  </ion-list-header>
+    
+                    <ion-item>
+                    <ion-label color="secondary">Yes</ion-label>
+                    <ion-radio slot="start" value="yes" ></ion-radio>
+                  </ion-item>
+                  <ion-item>
+                      <ion-label color="secondary">No</ion-label>
+                      <ion-radio slot="start" value="no"  ></ion-radio>
+                    </ion-item>
+    
+                </ion-radio-group>
+    </ion-item>
+
+     <!-- Quantity -->
+     <ion-item>
+        <ion-list-header>
+            <ion-label color="primary">Quantity</ion-label>
+        </ion-list-header>
+        
+        <ion-icon color="primary" name="remove-circle" (click)="decrement()"></ion-icon>
+            {{currentNumber}}
+        <ion-icon color="primary" name="add-circle" (click)="increment()"></ion-icon>
+
+     </ion-item>
+        
+
+
+      </ion-list>
+<!-- register button -->
+      <div class="ion-padding">
+        <ion-button expand="block" type="submit" class="ion-no-margin">Order</ion-button>
+      </div>
+    </form>
+  </ion-card-content>
+  </ion-card>
+</ion-content>
