@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="primary" >
-    <ion-title><ion-icon name="ios-cafe" style="zoom:1.5;"></ion-icon> </ion-title>
+    <ion-title><ion-icon routerLink="/home" name="ios-cafe" style="zoom:1.5;"></ion-icon> </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,7 +13,7 @@
            <ion-card-content text-center>
              
          <!-- Items -->
- <ion-card  *ngFor="let cat of categories" routerLink="/place-order"> 
+ <ion-card  *ngFor="let cat of categories" routerLink="/place-order"  (click)="selectItem(cat)"> 
       <ion-card-content >
             <img ion-card-image src="{{cat.picUrl}}" alt="Photo of item" >
             <ion-card-title color="primary">{{cat.name}}</ion-card-title>

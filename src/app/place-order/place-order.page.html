@@ -1,59 +1,63 @@
 <ion-header>
   <ion-toolbar color="primary" >
-    <ion-title><ion-icon name="ios-cafe" style="zoom:1.5;"></ion-icon> </ion-title>
+    <ion-title><ion-icon routerLink="/home" name="ios-cafe" style="zoom:1.5;"></ion-icon> </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 <!--your  order -->
-<ion-card>
-  <ion-card-title color="primary"> Your Order</ion-card-title>
+<ion-card  >
+  
+  <ion-card-title  color="primary" > Your Orders</ion-card-title>
+ 
   <ion-card-content>
  <!-- form -->
- <form onsubmit="processForm(event)" >
-    <!-- list -->
- <ion-list  lines="full" class="ion-no-margin ion-no-padding">
 
+    <!-- list -->
+ <ion-list *ngFor="let set of seletedItem" lines="full" class="ion-no-margin ion-no-padding">
+    <ion-item color="primary" >
+        {{set.name}}
+    </ion-item>
 <!-- add ons -->
         <ion-item>
   <!-- sugars -->
-      <ion-radio-group >
+      <ion-radio-group (ionChange)="getSugar($event)">
               <ion-list-header>
             <ion-label color="primary">Sugars</ion-label>
               </ion-list-header>
 
                 <ion-item>
                 <ion-label color="secondary">1</ion-label>
-                <ion-radio slot="start" value="male" ></ion-radio>
+                <ion-radio [(ngModel)]="sugar" slot="start" value="1" ></ion-radio>
               </ion-item>
               <ion-item>
                   <ion-label color="secondary" >2</ion-label>
-                  <ion-radio slot="start" value="female"  ></ion-radio>
+                  <ion-radio [(ngModel)]="sugar" slot="start" value="2"  ></ion-radio>
                 </ion-item>
                 <ion-item>
                     <ion-label color="secondary">3</ion-label>
-                    <ion-radio  slot="start" value="female"  ></ion-radio>
+                    <ion-radio [(ngModel)]="sugar"  slot="start" value="3"  ></ion-radio>
                   </ion-item>
 
             </ion-radio-group>
             </ion-item>
     <!-- Milk -->
     <ion-item>
-    <ion-radio-group>
+    <ion-radio-group  (ionChange)="getMilk($event)">
                   <ion-list-header>
                 <ion-label color="primary">Milk</ion-label>
                   </ion-list-header>
     
                     <ion-item>
                     <ion-label color="secondary">Yes</ion-label>
-                    <ion-radio slot="start" value="yes" ></ion-radio>
-                  </ion-item>
-                  <ion-item>
+                    <ion-radio [(ngModel)]="milk" slot="start" value="yes" ></ion-radio>
+                    </ion-item>
+                     <ion-item>
                       <ion-label color="secondary">No</ion-label>
-                      <ion-radio slot="start" value="no"  ></ion-radio>
+                      <ion-radio [(ngModel)]="milk" slot="start" value="no"  ></ion-radio>
                     </ion-item>
     
-                </ion-radio-group>
+      </ion-radio-group>
     </ion-item>
 
      <!-- Quantity -->
@@ -71,11 +75,18 @@
 
 
       </ion-list>
-<!-- register button -->
+      <!-- Total -->
+      <ion-card color="primary">
+
+      <ion-card-header>
+          <ion-label style="zoom:2.0">Total:    </ion-label>
+      </ion-card-header>
+      </ion-card>
+<!-- order button -->
       <div class="ion-padding">
-        <ion-button expand="block" type="submit" class="ion-no-margin">Order</ion-button>
+        <ion-button expand="block"   class="ion-no-margin" routerLink="/order" (click)="placeOrder(sugar,milk,currentNumber)">Order</ion-button>
       </div>
-    </form>
+  
   </ion-card-content>
   </ion-card>
 </ion-content>

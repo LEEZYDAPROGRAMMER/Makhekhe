@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar color="primary" >
-    <ion-title><ion-icon name="ios-cafe" style="zoom:1.5;"></ion-icon> </ion-title>
+    <ion-title><ion-icon routerLink="/home" name="ios-cafe" style="zoom:1.5;"></ion-icon> </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
    
+  <!-- order -->
+  <ion-card color="primary" > 
+      <ion-card-title text-center color="primary">--Orders--</ion-card-title>
+      <ion-card-content >
+         <ion-card-title color="primary">Checkout</ion-card-title>
+         <ion-list>
+           <ion-item   *ngFor="let order of orders">
+            Your order is: {{order.name}}
+            Sugar Teaspoons: {{order.sugars}} sugar
+          with milk:  {{order.milk}}
+            quantity is:  {{order.qty}} 
+            Price:  R{{order.price}} 
+           </ion-item>
+          </ion-list>
+      </ion-card-content>
+
+      
+  </ion-card>
+  <!-- checkout button -->
+  <ion-button color="primary" routerLink="/home" >Checkout</ion-button>
 </ion-content>
