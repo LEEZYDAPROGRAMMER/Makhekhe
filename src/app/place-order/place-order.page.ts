@@ -11,27 +11,36 @@ export class PlaceOrderPage implements OnInit {
  seletedItem
   sugars
  milk
+ tempTot=0;
+ itemPrice
   constructor(public shopServices:ShopServiceService) 
   { 
 
     this.seletedItem=this.shopServices.getSelected();
+    this.itemPrice=this.seletedItem[0].price;
+    this.tempTot=this.itemPrice
   }
   
   increment() 
   {
+   this.tempTot=this.tempTot+this.itemPrice
     this.currentNumber++;
+   
   }
   
    decrement() 
   {
+   
     if(this.currentNumber>1)
     {
+      this.tempTot=this.tempTot-this.itemPrice
     this.currentNumber--;
+    
     }
   }
-  placeOrder(sugar,milk,currentNumber)
+  placeOrder(currentNumber,tempTot)
   {
-      this.shopServices.placeOrder(sugar,milk,currentNumber)
+      this.shopServices.placeOrder(this.sugars,this.milk,currentNumber,tempTot)
   
   }
 

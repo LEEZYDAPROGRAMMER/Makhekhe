@@ -7,6 +7,7 @@ export class ShopServiceService {
 orders=[]
 cartItems=[]
 seletedItem=[]
+everyTot=0
 // sugars
 //  milk
 
@@ -27,6 +28,13 @@ getSelected()
 
   return this.seletedItem
 }
+//total
+//get selected
+getTotal()
+{
+
+  return this.everyTot
+}
 //get orders
 getOrders()
 {
@@ -34,19 +42,22 @@ getOrders()
   return this.orders
 }
 //place order
-placeOrder(sugar,milk,currentNumber)
+placeOrder(sugars,milk,currentNumber,tempTot)
 {
 
  
 
-     if(sugar!=null&&milk!=null&&currentNumber!=null)
+     if(sugars!=null&&milk!=null&&currentNumber!=null&&tempTot!=null)
      {
-      this.orders.push({name:this.seletedItem[0].name,sugar:sugar,milk:milk,qty:currentNumber,price:this.seletedItem[0].price })  
+      this.orders.push({name:this.seletedItem[0].name,sugar:sugars,milk:milk,qty:currentNumber,price:this.seletedItem[0].price,costQty:tempTot})  
       console.log(this.orders);
-      
+      this.everyTot=this.everyTot+tempTot
+      console.log(this.everyTot);
      }
 
 }
+//
+
 //selected item
 selectItem(cat)
 {
@@ -55,5 +66,13 @@ selectItem(cat)
      this.seletedItem.push({name:this.categories[index].name ,price:this.categories[index].price })      
 }
 
+checkout()
+{
+  this.orders=[]
+  this.cartItems=[]
+  this.seletedItem=[]
+  this.everyTot=0
+
+}
 
 }

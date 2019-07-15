@@ -13,17 +13,27 @@
          <ion-card-title color="primary">Checkout</ion-card-title>
          <ion-list>
            <ion-item   *ngFor="let order of orders">
-            Your order is: {{order.name}}
-            Sugar Teaspoons: {{order.sugars}} sugar
-          with milk:  {{order.milk}}
-            quantity is:  {{order.qty}} 
-            Price:  R{{order.price}} 
+            Item Name: {{order.name}}<br/>
+            Sugar Teaspoons: {{order.sugar}}<br/>
+            Milk: {{order.milk}}<br/>
+            Quantity is: {{order.qty}} <br/>
+            Price For Each: R{{order.price}} <br/>
+            Price for all: R{{order.costQty}}
            </ion-item>
           </ion-list>
       </ion-card-content>
 
       
   </ion-card>
+   <!-- Total -->
+   <ion-card color="primary">
+
+    <ion-card-header>
+        <ion-label style="zoom:1.2">Total: R{{eryTot}}</ion-label>
+    </ion-card-header>
+    </ion-card>
+   
+  
   <!-- checkout button -->
-  <ion-button color="primary" routerLink="/home" >Checkout</ion-button>
+  <ion-button color="primary" routerLink="/home" (click)="checkout()">Checkout</ion-button>
 </ion-content>

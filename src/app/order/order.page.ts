@@ -8,17 +8,23 @@ import { ShopServiceService } from '../ShopService/shop-service.service';
 })
 export class OrderPage implements OnInit {
   orders
+  eryTot
   constructor(public shopServices:ShopServiceService) 
   {
            this.orders=shopServices.getOrders()
-
+           this.eryTot=shopServices.getTotal()
+           console.log(this.eryTot)
    }
-   placeOrder(sugar,milk,currentNumber)
+   placeOrder(sugars,milk,currentNumber,tempTot)
    {
-        this.shopServices.placeOrder(sugar,milk,currentNumber)
+        this.shopServices.placeOrder(sugars,milk,currentNumber,tempTot)
 
    }
-
+   checkout()
+   {
+     this.shopServices.checkout()
+    
+   }
   ngOnInit() {
   }
 
